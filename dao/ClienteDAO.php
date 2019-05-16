@@ -65,15 +65,39 @@ class ClienteDAO extends ClasseDAO implements InterfaceDAO{
 			$stmt->bindParam(":id",$id);
 			$stmt->execute();
 			$row = $stmt->fetch();
-			$cliente = new Cliente();
-			$cliente->setId($row["id"]);
-			$cliente->setNome($row["nome"]);
-			$cliente->setCpf($row["cpf"]);
+			if($row){
+				$cliente = new Cliente();
+				$cliente->setId($row["id"]);
+				$cliente->setNome($row["nome"]);
+				$cliente->setCpf($row["cpf"]);
+			}else{
+				$cliente = null;
+			}	
 			return $cliente;					
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}
-	}			
+	}
+	
+	public function listarPorCpf($cpf){
+		try{
+			$stmt = $this->conexao->prepare("select * from clientes where cpf = :cpf");
+			$stmt->bindParam(":cpf",$cpf);
+			$stmt->execute();
+			$row = $stmt->fetch();			
+			if($row){
+				$cliente = new Cliente();
+				$cliente->setId($row["id"]);
+				$cliente->setNome($row["nome"]);
+				$cliente->setCpf($row["cpf"]);
+			}else{
+				$cliente = null;
+			}	
+			return $cliente;					
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}
+	} 			
 }	
 
 ?>
