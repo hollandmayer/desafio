@@ -7,6 +7,7 @@ class Pedido{
 	private $qtdParcelas;
 	private $formaPagto;
 	private $localIpCadPedido;
+	private $cliente;
 	
 	public function setId($id){
 		$this->id = $id;
@@ -46,7 +47,17 @@ class Pedido{
 	
 	public function getLocalIpCadPedido(){
 		return $this->localIpCadPedido;
-	}	
+	}
+	
+	//Recebe um objeto do tipo cliente
+	public function setCliente($cliente){
+		$this->cliente = $cliente;
+	}
+	
+	//Retorna um objeto do tipo cliente
+	public function getCliente(){
+		return $this->cliente;
+	}			
 		
 }	
 

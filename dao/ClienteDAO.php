@@ -59,6 +59,21 @@ class ClienteDAO extends ClasseDAO implements InterfaceDAO{
 		}			
 	}	
 	
+	public function listarPorId($id){
+		try{
+			$stmt = $this->conexao->prepare("select * from clientes where id = :id");
+			$stmt->bindParam(":id",$id);
+			$stmt->execute();
+			$row = $stmt->fetch();
+			$cliente = new Cliente();
+			$cliente->setId($row["id"]);
+			$cliente->setNome($row["nome"]);
+			$cliente->setCpf($row["cpf"]);
+			return $cliente;					
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}
+	}			
 }	
 
 ?>
