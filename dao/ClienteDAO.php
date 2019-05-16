@@ -3,15 +3,15 @@
 require_once "ClasseDAO.php";
 require_once "InterfaceDAO.php";
 
-require_once "../model/Cliente.php";
+require_once __DIR__."/../model/Cliente.php";
 
 class ClienteDAO extends ClasseDAO implements InterfaceDAO{
 	
 	public function incluir($param){
 		try{
 			$stmt = $this->conexao->prepare("insert into clientes (nome, cpf) values (:nome, :cpf)");
-			$stmt->bindParam(":nome",$param->getNome());
-			$stmt->bindParam(":cpf",$param->getCpf());
+			$stmt->bindValue(":nome",$param->getNome());
+			$stmt->bindValue(":cpf",$param->getCpf());
 			return $stmt->execute();
 		}catch(PDOException $e){
 			echo $e->getMessage();	
@@ -21,9 +21,9 @@ class ClienteDAO extends ClasseDAO implements InterfaceDAO{
 	public function excluir($param){
 		try{
 			$stmt = $this->conexao->prepare("delete from clientes where id = :id");
-			$stmt->bindParam(":id",$param->getId());
+			$stmt->bindValue(":id",$param->getId());
 			return $stmt->execute();	
-		}catch(PDOException){
+		}catch(PDOException $e){
 			echo $e->getMessage();
 		}
 	}
@@ -31,11 +31,11 @@ class ClienteDAO extends ClasseDAO implements InterfaceDAO{
 	public function atualizar($param){
 		try{
 			$stmt = $this->conexao->prepare("update clientes set nome = :nome, cpf = :cpf where id = :id");
-			$stmt->bindParam(":nome",$param->getNome());
-			$stmt->bindParam(":cpf",$param->getCpf());
-			$stmt->bindParam(":id",$param->getId());
+			$stmt->bindValue(":nome",$param->getNome());
+			$stmt->bindValue(":cpf",$param->getCpf());
+			$stmt->bindValue(":id",$param->getId());
 			return $stmt->execute();	
-		}catch(PDOException){
+		}catch(PDOException $e){
 			echo $e->getMessage();
 		}			
 	}
