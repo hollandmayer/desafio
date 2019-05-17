@@ -29,7 +29,7 @@
 <body>
 	<h3>Registro de Pedidos - Pedidos do Cliente</h3>
 	Cliente: <?=$_COOKIE["cpf"]." - ".$cliente->getNome()?><br><br>
-	<a href="cadPedidoView.php">CADASTRAR NOVO PEDIDO</a>
+	<a href="cadPedidoView.php">CADASTRAR NOVO PEDIDO</a>&nbsp;|&nbsp;<a href="../index.php">Voltar</a>
 	<table border="1">
 		<tr>
 			<th colspan="4">Pedidos</th>
@@ -46,7 +46,14 @@
 				echo "<tr>";
 				echo "<td>".$pedido->getValorTotal()."</td>";
 				echo "<td>".$pedido->getQtdParcelas()."</td>";
-				echo "<td>".$pedido->getFormaPagto()."</td>";
+				if($pedido->getFormaPagto() == 1){
+					$formaPgto = "Crédito";
+				}else if($pedido->getFormaPagto() == 2){
+					$formaPgto = "Débito";
+				}else{
+					$formaPgto = "À Vista";
+				}			
+				echo "<td>".$formaPgto."</td>";
 				echo "<td><a href=\"#\">E</a></td>";
 				echo "</tr>";	
 			}			

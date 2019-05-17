@@ -27,7 +27,25 @@
 						</select>
 					</td>
 				</tr>
-				<tr><td>Quantidade de Parcelas:</td><td><input type="text" name="edtQtdParcelas" required="required" disabled value="1"></td></tr>
+				<tr>
+					<td>Quantidade de Parcelas:</td>
+					<td>
+						<select name="slcQtdParcelas" disabled>
+							<option value="1" selected>1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+					</td>
+				</tr>
 				<tr><td colspan="2"><input type="submit" value="Prosseguir"></td></tr>
 			</table>			 
 		</form>	

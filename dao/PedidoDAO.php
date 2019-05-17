@@ -99,7 +99,31 @@ class PedidoDAO extends ClasseDAO implements InterfaceDAO{
 		}catch(PDOException $e){
 			echo $e->getMessage();	
 		}			
-	}					
+	}
+	
+	public function listarUltimoRegistroInseridoPorCliente($cliente){
+		try{
+			$stmt = $this->conexao->prepare("select * from pedidos where cliente = :cliente order by id desc limit 1");
+			$stmt->bindValue(":cliente",$cliente->getId());
+			$stmt->execute();
+			$row = $stmt->fetch();
+			
+			$pedido = new Pedido();
+			$pedido->setId($row["id"]);
+			$pedido->setValorTotal($row["valorTotal"]);
+			$pedido->setQtdParcelas($row["qtdParcelas"]);
+			$pedido->setFormaPagto($row["formaPagto"]);
+			$pedido->setLocalIpCadPedido($row["localIpCadPedido"]);
+			
+			//Buscando o cliente do pedido
+			$clienteDao = new ClienteDAO();
+			$pedido->setCliente($clienteDao->listarPorId($row["cliente"]));
+			
+			return $pedido;			
+		}catch(PDOException $e){
+			echo $e->getMessage();	
+		}			
+	}						
 	
 }	
 
