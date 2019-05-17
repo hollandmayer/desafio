@@ -15,14 +15,15 @@
 	$clienteDao = new ClienteDAO();
 	$cliente = $clienteDao->listarPorCpf($cpf);
 	
+	setcookie("cpf",$cpf,0,"/desafio/");	
 	if($cliente == null){
 		//Não há cliente cadastrado com o cpf informado
-		//Encaminharemos para o cadastro de cliente
-		header("location:../view/cadClienteView.php?cpf=".$cpf);
+		//Encaminharemos para o cadastro de cliente		
+		header("location:../view/cadClienteView.php");
 	}else{
 		//Há cliente cadastrado com o cpf informado
 		//Encaminharemos para o cadastro de pedido
-		header("location:../view/cadPedidoView.php?cpf=".$cpf);
+		header("location:../view/listaPedidosView.php");
 	}		
 
 ?>
