@@ -24,18 +24,7 @@
 						$decodLocal["country_name"]." - ".
 						$decodLocal["state_prov"]." - ".
 						$decodLocal["city"]." - ".
-						$decodLocal["zipcode"];
-		
-	//Atualizando o valor total de acordo 
-	//com a forma de pagamento escolhida:
-	switch($formaPgto){	
-		case 1 : $valorTotal += 0.03*$valorTotal;
-				 break;
-		case 2 : $valorTotal -= 0.05*$valorTotal;
-				 break;
-		case 3 : $valorTotal -= 0.1*$valorTotal;
-				 break;
-	}
+						$decodLocal["zipcode"];		
 	
 	//Gravando efetivamento:
 	//Gerando um pedido
@@ -48,6 +37,11 @@
 	$pedidoDao = new PedidoDAO();
 	if($pedidoDao->incluir($pedido)){		
 		header("location:../view/exibePedidoView.php");
+	}else{
+		echo "<script>
+				window.location = '../view/cadPedidoView.php';
+				alert('Pedido não cadastrado! Consulte o administrador do sistema.');
+			  </script>";
 	}	
 
 ?>

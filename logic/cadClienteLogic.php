@@ -18,6 +18,11 @@
 	$clienteDao = new ClienteDAO();
 	if($clienteDao->incluir($cliente)){
 		header("location:../view/listaPedidosView.php");
-	}	
+	}else{
+		echo "<script>
+				window.location = '../view/cadClienteView.php';
+				alert('Cliente não cadastrado! Consulte o administrador do sistema.');
+			  </script>";
+	}		
 
 ?>

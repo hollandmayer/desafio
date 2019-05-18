@@ -16,7 +16,10 @@
 			<table>
 				<tr><td>CPF:</td><td><?=$_COOKIE["cpf"]?></td></tr>
 				<tr><td>Informe seu nome:</td><td><input type="text" name="edtNome" required="required" /></td></tr>
-				<tr><td colspan="2"><input type="submit" value="Prosseguir"></td></tr>
+				<tr>
+					<td><input type="submit" value="Prosseguir"></td>
+					<td><a href="../index.php">Sair</a></td>
+				</tr>
 			</table>			 
 		</form>
 	</fieldset>	

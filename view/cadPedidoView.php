@@ -16,7 +16,7 @@
 		<legend>Formul&aacute;rio de Cadastro</legend>
 		<form method="post" action="../logic/cadPedidoLogic.php" name="frmCadPedido">
 			<table>
-				<tr><td>Valor Total:</td><td><input type="text" name="edtValorTotal" required="required"></td></tr>
+				<tr><td>Valor Total:</td><td><input type="text" name="edtValorTotal" required="required" pattern="[0-9]+.[0-9]{2}$" onchange="this.value = this.value.replace(/,/g, '.')"></td></tr>
 				<tr><td>Forma de Pagamento:</td>
 					<td>
 						<select name="slcFormaPgto" onclick="verificaOpcao()">
@@ -46,7 +46,10 @@
 						</select>
 					</td>
 				</tr>
-				<tr><td colspan="2"><input type="submit" value="Prosseguir"></td></tr>
+				<tr>
+					<td><input type="submit" value="Prosseguir"></td>
+					<td><a href="listaPedidosView.php">Voltar</a></td>
+				</tr>
 			</table>			 
 		</form>	
 	</fieldset>	

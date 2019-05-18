@@ -24,8 +24,7 @@ class Localizador{
 		else if(isset($_SERVER["REMOTE_ADDR"]))
 			$this->ip = $_SERVER["REMOTE_ADDR"];
 		else
-			$this->ip = "UNKNOWN";
-		$this->ip = "200.17.141.3";						
+			$this->ip = "UNKNOWN";						
 	}
 	
 	//Seta os parâmetros que serão repassados ao geolocalizador

@@ -15,6 +15,7 @@
 	$clienteDao = new ClienteDAO();
 	$cliente = $clienteDao->listarPorCpf($cpf);
 	
+	//Guardando o cpf em um cookie para uso futuro na aplicação
 	setcookie("cpf",$cpf,0,"/desafio/");	
 	if($cliente == null){
 		//Não há cliente cadastrado com o cpf informado

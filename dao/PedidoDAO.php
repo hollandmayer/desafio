@@ -73,6 +73,28 @@ class PedidoDAO extends ClasseDAO implements InterfaceDAO{
 		}
 	}
 	
+	public function listarPorId($id){
+		try{
+			$stmt = $this->conexao->prepare("select * from pedidos where id = :id");
+			$stmt->bindValue(":id",$id);
+			$stmt->execute();
+			$row = $stmt->fetch();
+			if($row){
+				$pedido = new Pedido();
+				$pedido->setId($row["id"]);
+				$pedido->setValorTotal($row["valorTotal"]);
+				$pedido->setQtdParcelas($row["qtdParcelas"]);
+				$pedido->setFormaPagto($row["formaPagto"]);
+				$pedido->setLocalIpCadPedido($row["localIpCadPedido"]);
+			}else{
+				$pedido = null;
+			}
+			return $pedido;						
+		}catch(PDOException $e){
+			echo $e->getMessage();	
+		}		
+	}	
+	
 	public function listarPorCliente($cliente){
 		try{
 			$stmt = $this->conexao->prepare("select * from pedidos where cliente = :cliente");

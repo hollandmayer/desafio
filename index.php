@@ -15,7 +15,7 @@
 		<legend>Formul&aacute;rio de Acesso</legend>
 		<form method="post" action="logic/acessoLogic.php">
 			<table>
-				<tr><td>Informe seu cpf:</td><td><input type="text" name="edtCpf" required="required" pattern="[0-9]+$"/></td></tr>
+				<tr><td>Informe seu cpf:</td><td><input type="text" name="edtCpf" required="required" pattern="[0-9]+$" placeholder="Digite apenas números" /></td></tr>
 				<tr><td colspan="2"><input type="submit" value="Prosseguir"></td></tr>
 			</table>			 
 		</form>
